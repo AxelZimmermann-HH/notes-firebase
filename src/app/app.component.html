@@ -1,0 +1,15 @@
+<div class="app_wrapper">
+  <!-- Zunächst werden CSS-Klassen an den Zustand der Variable addDialogOpen geknüpft.
+   Definiert in der zugehörigen TS dieser component und standardmäßig false -->
+  <div class="dialog_wrapper"
+      [ngClass]="{'dialog_open': addDialogOpen, 'dialog_closed': !addDialogOpen}">
+      <!-- Hier wird addDialogClosed aus der Child.ts eingebunden. Das Event, das dort ausgelöst
+       wird, ändert dann ebenso hier den Status von addDialogOpen -->
+      <div>
+          <app-add-note-dialog (addDialogClosed)="addDialogOpen = $event"></app-add-note-dialog>
+      </div>
+  </div>
+  <app-header class="z_index_m" (openNoteChange)="addDialogOpen = $event"></app-header>
+  <app-note-list class="z_index_m"></app-note-list>
+  <app-footer class="z_index_m"></app-footer>
+</div>
